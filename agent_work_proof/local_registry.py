@@ -12,8 +12,8 @@ from pathlib import Path
 from typing import List, Optional, Dict
 from datetime import datetime, timezone
 
-from ..credentials import WorkCredential
-from ..reputation import ReputationGraph
+from .work_credential import WorkCredential
+from .reputation_graph import ReputationGraph
 
 
 class LocalRegistry:

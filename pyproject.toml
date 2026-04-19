@@ -3,12 +3,12 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "agentwork"
+name = "agent-work-proof"
 version = "0.1.0"
 description = "Portable proof that an AI agent got the job done."
 readme = "README.md"
 license = { text = "MIT" }
-authors = [{ name = "agentwork contributors" }]
+authors = [{ name = "agent-work-proof contributors" }]
 requires-python = ">=3.10"
 keywords = ["ai", "agents", "identity", "credentials", "reputation", "verifiable-credentials"]
 classifiers = [
@@ -30,13 +30,13 @@ dev = ["pytest>=8.0", "pytest-cov"]
 langchain = ["langchain>=0.2.0"]
 
 [project.urls]
-Homepage = "https://github.com/shaikh-amer/agentwork"
-Repository = "https://github.com/shaikh-amer/agentwork"
-Issues = "https://github.com/shaikh-amer/agentwork/issues"
+Homepage = "https://github.com/shaikh-amer/agent-work-proof"
+Repository = "https://github.com/shaikh-amer/agent-work-proof"
+Issues = "https://github.com/shaikh-amer/agent-work-proof/issues"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["agentwork*"]
+include = ["agent_work_proof*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

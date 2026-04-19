@@ -1,8 +1,8 @@
-# agentwork
+# agent-work-proof
 
 **Portable proof that an AI agent got the job done.**
 
-[![PyPI version](https://badge.fury.io/py/agentwork.svg)](https://badge.fury.io/py/agentwork)
+[![PyPI version](https://badge.fury.io/py/agent-work-proof.svg)](https://badge.fury.io/py/agent-work-proof)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Tests](https://img.shields.io/badge/tests-29%20passed-brightgreen)]()
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)]()
@@ -19,7 +19,7 @@ Right now, AI agents do consequential work but leave no portable, verifiable tra
 
 Humans have CVs, contracts, references. AI agents have nothing.
 
-**agentwork fixes this.**
+**agent-work-proof fixes this.**
 
 ---
 
@@ -41,7 +41,7 @@ An agent's full work history expressed as a queryable graph — completion rates
 ## Install
 
 ```bash
-pip install agentwork
+pip install agent-work-proof
 ```
 
 No server required. No external dependency. Credentials are just signed JSON files — store them wherever you want.
@@ -51,12 +51,12 @@ No server required. No external dependency. Credentials are just signed JSON fil
 ## 60-second quickstart
 
 ```python
-from agentwork import AgentWallet, WorkCredential, LocalRegistry
+from agent-work-proof import AgentWallet, WorkCredential, LocalRegistry
 
 # 1. Give your agent a cryptographic identity
 wallet = AgentWallet.create("my-agent")
 wallet.save("./wallet.json")
-print(wallet.did)  # did:agentwork:4f2a8b3c...
+print(wallet.did)  # did:agent-work-proof:4f2a8b3c...
 
 # 2. When a task completes, issue a credential
 cred = WorkCredential.issue(
@@ -79,7 +79,7 @@ print(rep.summary())
 Output:
 ```
 ReputationGraph
-  Agent:         my-agent (did:agentwork:4f2a8b3c...)
+  Agent:         my-agent (did:agent-work-proof:4f2a8b3c...)
   Tier:          Bronze  (score: 142/1000)
   Completed:     5 tasks
   Satisfied:     100.0%
@@ -95,8 +95,8 @@ ReputationGraph
 ### OpenCode / TinyClaw
 
 ```python
-from agentwork import AgentWallet, LocalRegistry
-from agentwork.adapters import OpenCodeAdapter
+from agent-work-proof import AgentWallet, LocalRegistry
+from agent-work-proof.adapters import OpenCodeAdapter
 
 wallet = AgentWallet.load("./wallet.json")
 registry = LocalRegistry("./registry/")
@@ -119,7 +119,7 @@ print(governed.last_credential.summary())
 ### LangChain
 
 ```python
-from agentwork.adapters import LangChainAdapter
+from agent-work-proof.adapters import LangChainAdapter
 
 callback = LangChainAdapter.callback(wallet=wallet, registry=registry)
 
@@ -130,7 +130,7 @@ agent.run("Summarize this document", callbacks=[callback])
 ### Any custom agent
 
 ```python
-from agentwork.adapters import BaseAdapter
+from agent-work-proof.adapters import BaseAdapter
 
 def my_agent(task: str) -> str:
     # your agent code here
@@ -145,7 +145,7 @@ governed.run("Do something important")
 ## Delivery proofs (dispute-free escrow)
 
 ```python
-from agentwork import DeliveryAgreement, DeliveryProof
+from agent-work-proof import DeliveryAgreement, DeliveryProof
 
 # Before work starts — both parties agree on acceptance criteria
 agreement = DeliveryAgreement.create(
@@ -176,12 +176,12 @@ print(proof.verify_output(delivered_code))  # True — hash matches
 ## Querying reputation before trusting an agent
 
 ```python
-from agentwork import LocalRegistry
+from agent-work-proof import LocalRegistry
 
 registry = LocalRegistry("./registry/")
 
 # Query by agent DID
-rep = registry.get_reputation("did:agentwork:4f2a8b3c...")
+rep = registry.get_reputation("did:agent-work-proof:4f2a8b3c...")
 
 print(rep.tier)              # Gold
 print(rep.score)             # 743
@@ -217,7 +217,7 @@ cred = WorkCredential.from_dict(data)  # reload
 
 **Self-hosted registry** *(coming soon)*:
 ```bash
-docker run -p 8000:8000 agentwork/registry
+docker run -p 8000:8000 agent-work-proof/registry
 ```
 
 **Public registry** *(optional, coming soon)* — agents publish credentials publicly for cross-platform reputation.
@@ -227,7 +227,7 @@ docker run -p 8000:8000 agentwork/registry
 ## Supported task types
 
 ```python
-from agentwork import TASK_TYPES
+from agent-work-proof import TASK_TYPES
 # code-generation, code-review, data-analysis, content-writing,
 # email-management, web-research, api-integration, testing,
 # debugging, file-management, customer-support, general
@@ -238,7 +238,7 @@ from agentwork import TASK_TYPES
 ## Architecture
 
 ```
-agentwork/
+agent-work-proof/
 ├── wallet/        # Ed25519 keypairs, DID generation
 ├── credentials/   # WorkCredential, DeliveryProof, DeliveryAgreement
 ├── reputation/    # ReputationGraph, scoring, tiers
@@ -257,7 +257,7 @@ agentwork/
 
 ## Comparison
 
-|                        | agentwork | Microsoft AGT | Solana Agent Registry |
+|                        | agent-work-proof | Microsoft AGT | Solana Agent Registry |
 |------------------------|-----------|---------------|----------------------|
 | Work history / CV      | ✅        | ❌            | partial              |
 | Delivery proofs        | ✅        | ❌            | ❌                   |
@@ -267,7 +267,7 @@ agentwork/
 | Runtime policy engine  | ❌        | ✅            | ❌                   |
 | Blockchain dependency  | ❌        | ❌            | ✅                   |
 
-agentwork is complementary to Microsoft's Agent Governance Toolkit — they govern what agents *can* do at runtime; agentwork proves what agents *did* do over time.
+agent-work-proof is complementary to Microsoft's Agent Governance Toolkit — they govern what agents *can* do at runtime; agent-work-proof proves what agents *did* do over time.
 
 ---
 
@@ -283,21 +283,21 @@ agentwork is complementary to Microsoft's Agent Governance Toolkit — they gove
 - [ ] OpenAI Agents SDK adapter
 - [ ] Self-hosted registry (FastAPI + Docker)
 - [ ] Public registry (cross-platform reputation)
-- [ ] CLI (`agentwork verify`, `agentwork reputation`)
-- [ ] JavaScript/TypeScript package (`agentwork-js`)
+- [ ] CLI (`agent-work-proof verify`, `agent-work-proof reputation`)
+- [ ] JavaScript/TypeScript package (`agent-work-proof-js`)
 
 ---
 
 ## Contributing
 
 ```bash
-git clone https://github.com/shaikh-amer/agentwork
-cd agentwork
+git clone https://github.com/shaikh-amer/agent-work-proof
+cd agent-work-proof
 pip install -e ".[dev]"
 pytest tests/ -v
 ```
 
-Issues, PRs, and framework adapters welcome. If you're building an agent marketplace or orchestration platform and want to integrate agentwork, open an issue — we'll build the adapter together.
+Issues, PRs, and framework adapters welcome. If you're building an agent marketplace or orchestration platform and want to integrate agent-work-proof, open an issue — we'll build the adapter together.
 
 ---
 

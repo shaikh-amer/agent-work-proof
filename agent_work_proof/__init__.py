@@ -1,11 +1,11 @@
 """
-agentwork — Portable proof that an AI agent got the job done.
+agent-work-proof — Portable proof that an AI agent got the job done.
 
 The open standard for AI agent work history, delivery proofs, and portable reputation.
 No server required. No central authority. The agent owns its history.
 
 Quick start:
-    from agentwork import AgentWallet, WorkCredential, ReputationGraph, LocalRegistry
+    from agent_work_proof import AgentWallet, WorkCredential, ReputationGraph, LocalRegistry
 
     # 1. Create a wallet for your agent
     wallet = AgentWallet.create("my-agent")
@@ -29,14 +29,14 @@ Quick start:
     print(rep.summary())
 """
 
-from .wallet import AgentWallet
-from .credentials import WorkCredential, DeliveryProof, DeliveryAgreement, TASK_TYPES
-from .reputation import ReputationGraph
-from .registry import LocalRegistry
+from .agent_wallet import AgentWallet
+from .work_credential import WorkCredential, DeliveryProof, DeliveryAgreement, TASK_TYPES
+from .reputation_graph import ReputationGraph
+from .local_registry import LocalRegistry
 from .adapters import BaseAdapter, OpenCodeAdapter, LangChainAdapter
 
 __version__ = "0.1.0"
-__author__ = "agentwork contributors"
+__author__ = "agent-work-proof contributors"
 __license__ = "MIT"
 
 __all__ = [

@@ -1,11 +1,11 @@
 """
-Example: Wrapping an OpenCode / TinyClaw agent with agentwork.
+Example: Wrapping an OpenCode / TinyClaw agent with agent-work-proof.
 
 This shows the simplest possible integration — 10 lines of code,
 zero changes to your existing agent.
 """
-from agentwork import AgentWallet, LocalRegistry
-from agentwork.adapters import OpenCodeAdapter
+from agent_work_proof import AgentWallet, LocalRegistry
+from agent_work_proof.adapters import OpenCodeAdapter
 
 
 # ─── Step 1: Create or load your agent's wallet ──────────────────────────────

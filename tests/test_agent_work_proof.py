@@ -1,12 +1,12 @@
 """
-Tests for agentwork core functionality.
+Tests for agent-work-proof core functionality.
 """
 import pytest
 import tempfile
 import os
 from pathlib import Path
 
-from agentwork import (
+from agent_work_proof import (
     AgentWallet,
     WorkCredential,
     DeliveryProof,

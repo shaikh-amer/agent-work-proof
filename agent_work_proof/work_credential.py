@@ -18,7 +18,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional, Dict, Any
 
-from ..wallet import AgentWallet
+from .agent_wallet import AgentWallet
 
 
 CREDENTIAL_VERSION = "1.0"

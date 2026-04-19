@@ -1,5 +1,5 @@
 """
-Adapters — drop-in wrappers that add agentwork to existing agent frameworks.
+Adapters — drop-in wrappers that add agent-work-proof to existing agent frameworks.
 
 Supported:
     - BaseAdapter     (generic, wrap any callable agent)
@@ -7,7 +7,7 @@ Supported:
     - LangChainAdapter (for LangChain agents)
 
 Usage:
-    from agentwork.adapters import OpenCodeAdapter
+    from agent_work_proof.adapters import OpenCodeAdapter
     
     governed = OpenCodeAdapter.wrap(
         agent=my_agent,
@@ -22,9 +22,9 @@ Usage:
 import functools
 from typing import Callable, Optional, Any, Dict
 
-from ..wallet import AgentWallet
-from ..credentials import WorkCredential, TASK_TYPES
-from ..registry import LocalRegistry
+from .agent_wallet import AgentWallet
+from .work_credential import WorkCredential, TASK_TYPES
+from .local_registry import LocalRegistry
 
 
 class BaseAdapter:
@@ -109,8 +109,8 @@ class OpenCodeAdapter(BaseAdapter):
     Adapter for OpenCode / TinyClaw agents.
     
     Usage:
-        from agentwork.adapters import OpenCodeAdapter
-        from agentwork import AgentWallet, LocalRegistry
+        from agent_work_proof.adapters import OpenCodeAdapter
+        from agent_work_proof import AgentWallet, LocalRegistry
         
         wallet = AgentWallet.load("./wallet.json")
         registry = LocalRegistry("./registry/")
@@ -139,7 +139,7 @@ class LangChainAdapter:
     Hooks into LangChain's callback system — zero rewrite of existing agent code.
     
     Usage:
-        from agentwork.adapters import LangChainAdapter
+        from agent_work_proof.adapters import LangChainAdapter
         
         callback = LangChainAdapter.callback(wallet=wallet, registry=registry)
         

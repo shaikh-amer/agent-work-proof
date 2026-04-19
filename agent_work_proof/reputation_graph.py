@@ -17,7 +17,7 @@ from typing import List, Dict, Optional, Any
 from collections import defaultdict
 from datetime import datetime, timezone
 
-from ..credentials import WorkCredential
+from .work_credential import WorkCredential
 
 
 TIERS = [

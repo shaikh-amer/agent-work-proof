@@ -18,7 +18,7 @@ import uuid
 from datetime import datetime, timezone
 from typing import Optional, Dict, Any
 
-from ..wallet import AgentWallet
+from .agent_wallet import AgentWallet
 
 
 class DeliveryAgreement:
