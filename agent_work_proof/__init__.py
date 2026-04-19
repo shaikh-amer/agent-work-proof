@@ -30,7 +30,8 @@ Quick start:
 """
 
 from .agent_wallet import AgentWallet
-from .work_credential import WorkCredential, DeliveryProof, DeliveryAgreement, TASK_TYPES
+from .work_credential import WorkCredential, TASK_TYPES
+from .delivery_proof import DeliveryProof, DeliveryAgreement
 from .reputation_graph import ReputationGraph
 from .local_registry import LocalRegistry
 from .adapters import BaseAdapter, OpenCodeAdapter, LangChainAdapter
