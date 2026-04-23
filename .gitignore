@@ -10,3 +10,5 @@ build/
 /test-registry/
 /registry/
 /wallet.json
+venv/
+venv/
